@@ -1,3 +1,16 @@
-# First Chapter
+# 数据接入实施
 
-GitBook allows you to organize your book into chapters, each chapter is stored in a separate file like this one.
+建议在准备接入数据前与我们的售前工程师进行沟通，系统的梳理分析需求。
+
+也可以直接接入SDK进行快速查看数据。
+
+  
+如果需要同时接入多个应用，请先确定是否对数据进行合并分析：
+
+·同一个siteID下数据是合并的，不做区分。
+
+·如果想要分开分析则需要创建多个siteID。
+
+  
+
+
