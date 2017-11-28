@@ -5,4 +5,5 @@
   * [Web JS SDK ](chapter1/web-js-sdk.md)
   * [iOS SDK](chapter1/ios-sdk.md)
   * [Android SDK](android-sdk.md)
+* [功能使用介绍](shu-ju-gai-lan.md)
 
