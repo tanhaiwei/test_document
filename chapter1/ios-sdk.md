@@ -99,7 +99,7 @@ Appdelegate.m中的didFinishLaunchingWithOptions方法中调用来实现tracker�
 ```
 static NSString * const DatatistProductionServerURL = @"https://xxxxxxx";
 static NSString * const DatatistProductionSiteID = @"xxxxxxxxxx";
-[DatatistTracker initWithSiteID:DatatistProductionSiteID baseURL:[NSURL URLWithString:DatatistProductionServerURL]]; 
+[DatatistTracker initWithSiteID:DatatistProductionSiteID baseURL:[NSURL URLWithString:DatatistProductionServerURL]];
 ```
 
 showLog设置，是否打印log，用于调试。
@@ -127,8 +127,6 @@ showLog设置，是否打印log，用于调试。
 ·在注册流程结束后设置新注册用户的userID
 
 ·在登录流程结束后设置已有用户登录的userID
-
-
 
 ##### 页面采集：
 
@@ -161,4 +159,91 @@ udVariable: 用户自定义参数，可以为nil
 建议设置页面采集的位置如下：
 
 建议将页面采集接口放在根控制器中实现
+
+## 4.事件配置
+
+### 4.1搜索采集
+
+说明：点击搜索按钮时，采集搜索的关键词及关键词来源，如热门推荐词或历史记录，可以用map添加自定义变量 。
+
+##### 接口声明：
+
+```
+- (void)trackSearch:(NSString *)keyword recommendationSearchFlag:(BOOL)recommendationFlag historySearchFlag:(BOOL)historyFlag udVariable:(NSDictionary *)vars;
+```
+
+API说明：获取搜索栏的关键词和结果信息 。
+
+##### 参数说明：
+
+keyword：搜索的关键词
+
+recommendationFlag: 常用词搜索
+
+historySearchFlag：历史搜索
+
+udVariable:    用户自定义参数，可以为nil
+
+样例程序：
+
+```
+// Measure the most popular keywords used for different search  operations in the app
+[[DatatistTracker sharedInstance] trackSearch:@"zpf_test" recommendationSearchFlag:false historySearchFlag:false udVariable:@{@"search": @"searchBar"}];
+```
+
+### 4.2用户注册
+
+说明：用户注册成功的回调中，先调用setUserId接口，再调用用户注册接口，采集注册信息，可以用map添加自定义变量 。
+
+##### 接口声明：
+
+```
+- (void)trackRegister:(NSString *)uid type:(NSString *)type authenticated:(BOOL)auth udVariable:(NSDictionary *)vars;
+```
+
+API说明：采集用户注册事件。
+
+##### 参数说明：
+
+uid: 用户注册的用户ID；
+
+type: 用户类型；
+
+authenticated: 是否已认证的标识；
+
+udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式进行存储；
+
+样例程序：
+
+```
+[[DatatistTracker sharedInstance] trackRegister:@"1234567890" type:@"register" authenticated:true udVariable:nil];
+```
+
+### 4.3登录
+
+说明：用户登录成功的回调中，先调用setUserId接口，再调用用户登录接口，采集登录信息，可以用map添加自定义变量 。
+
+##### 接口声明：
+
+```
+- (void)trackLogin:(NSString *)uid udVariable:(NSDictionary *)vars;
+```
+
+API说明：采集用户登录事件 。
+
+##### 参数说明：
+
+uid: 用户ID
+
+udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式进行传输
+
+样例程序：
+
+```
+[[DatatistTracker sharedInstance] trackLogin:@"your_userid" udVariable:@{@"loginTime": @((long long)[[NSDate date] timeIntervalSince1970] * 1000)}];
+```
+
+
+
+
 
