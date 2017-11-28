@@ -160,7 +160,7 @@ udVariable: 用户自定义参数，可以为nil
 
 建议将页面采集接口放在根控制器中实现
 
-## 4.事件配置
+## 4.基础事件
 
 ### 4.1搜索采集
 
@@ -245,7 +245,7 @@ udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式�
 
 ### 4.4产品页访问
 
-说明：进入商品详情页后调用，采集商品信息，可以用map添加自定义变量 。
+说明：进入商品详情页后调用，采集商品信息，可以用map添加自定义变量 。
 
 ##### 接口声明：
 
@@ -277,6 +277,209 @@ udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式�
 // 产品页访问
 [[DatatistTracker sharedInstance] trackProductPage:@"4567934501204569" productCategory1:@"电子产品" productCategory2:@"手机" productCategory3:@"安卓手机" productOriginPrice:3999.0 productRealPrice:3000.0 udVariable:@{@"event": @"productPage"}];
 ```
+
+### 4.5加入购物车
+
+说明：点击加入购物车按钮时调用，采集加入购物车的商品信息，可以用map添加自定义变量 。
+
+##### 接口声明：
+
+```
+- (void)trackAddCart:(NSString *)sku productQuantity:(long)quantity productRealPrice:(double)realPrice udVariable:(NSDictionary *)vars;
+```
+
+API说明：采集商品加入购物车事件。
+
+##### 参数说明：
+
+sku: 被加入购物车的SKU商品信息；
+
+quantity: 被加入购物车的SKU商品数量；
+
+realPrice: 被加入购物车的商品单价
+
+value：integer或者float的值，对name做附加说明
+
+udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式进行传输
+
+样例程序：
+
+```
+//购物车事件追踪
+[[DatatistTracker sharedInstance] trackAddCart:@"4567934501204569" productQuantity:3 productRealPrice:3000.0 udVariable:nil];
+```
+
+### 4.6生成订单
+
+说明：提交订单时调用，设置订单中的必要参数，采集订单信息，可以用map添加自定义变量 。
+
+
+
+   接口声明：- \(void\)trackOrder:\(DatatistOrderInfo \*\)order couponInfo:\(NSArray \*\)coupons productInfo:\(NSArray \*\)products udVariable:\(NSDictionary \*\)vars;
+
+API说明：采集创建订单事件。
+
+参数说明：
+
+DatatistOrderInfo: 订单信息，其中包含项5项具体的参数：
+
+    orderID: 订单号
+
+                     orderAMT: 订单总价
+
+                    shipAMT: 运费总价
+
+                     shipAddress: 收货地址
+
+                     shipMethod: 配送方式
+
+
+
+                          couponInfo为DatatistCouponInfo数组， DatatistCouponInfo: 优惠券信息，其中包含2项具体的参数：
+
+                     couponType: 优惠券类型
+
+                     couponAMT: 优惠券金额
+
+                           
+
+                          productInfo为DatatistProductInfo数组， DatatistProductInfo: 产品信息，其中包含6项具体的参数：
+
+                     productSKU: 产品SKU
+
+                     productTitle: 产品名称
+
+                     productRealPrice: 产品实际成交价
+
+                     productOriPrice: 产品原价
+
+                     productQuantity：产品数量
+
+			    productSourceSku：活动商品来源（例如赠品产品。传原商品sku，标识原商品的绑定关系）
+
+                          udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式进行传输。
+
+样例程序：
+
+          
+
+                     DatatistOrderInfo \*orderInfo = \[DatatistOrderInfo new\];
+
+                     orderInfo.orderID = @"2017101716591100";
+
+                     orderInfo.orderAMT = 9020.0;
+
+                     orderInfo.shipMethod = @"顺丰快递";
+
+                     orderInfo.shipAddress = @"上海市徐汇区宜山路333号  s汇鑫国际1号楼603\#";
+
+                     orderInfo.shipAMT = 20.0;
+
+    
+
+                     DatatistCouponInfo \*couponInfo = \[DatatistCouponInfo new\];
+
+                     couponInfo.couponType = @"红包%";
+
+couponInfo.couponAMT = 999.002;
+
+
+
+DatatistCouponInfo \*couponInfo2 = \[DatatistCouponInfo new\];
+
+                     couponInfo2.couponType = @"优惠券%";
+
+couponInfo2.couponAMT = 99.002;
+
+    
+
+                     DatatistProductInfo \*productInfo = \[DatatistProductInfo new\];
+
+                     productInfo.sku = @"4567934501204569";
+
+                     productInfo.productTitle = @"小米 Mix 2";
+
+                     productInfo.productOriPrice = 3999.0;
+
+                    productInfo.productRealPrice = 0.01;
+
+                    productInfo.productQuantity = 3;
+
+productInfo.productSourceSku = @"xxxxxxxxxxxxxxxxx";
+
+
+
+DatatistProductInfo \*productInfo2 = \[DatatistProductInfo new\];
+
+                     productInfo2.sku = @"4567934501204569";
+
+                     productInfo2.productTitle = @"华为mate9 ";
+
+                     productInfo2.productOriPrice = 3999.0;
+
+                    productInfo2.productRealPrice = 0.01;
+
+                    productInfo2.productQuantity = 3;
+
+productInfo2.productSourceSku = @"xxxxxxxxxxxxxxxxx";
+
+    
+
+                    \[\[DatatistTracker sharedInstance\] trackOrder:orderInfo couponInfo:@\[couponInfo, couponInfo2\] productInfo:@\[productInfo, productInfo2\] udVariable:nil\];               
+
+                
+
+7支付订单
+
+说明：支付成功时调用，采集支付信息，可以用map添加自定义变量 。
+
+接口声明： - \(void\)trackPayment:\(NSString \*\)orderId payMethod:\(NSString \*\)method payStatus:\(BOOL\)pay payAMT:\(double\)amt udVariable:\(NSDictionary \*\)vars;
+
+API说明：采集订单支付事件 。
+
+参数说明：
+
+orderID: 订单号
+
+payMenthod: 支付渠道
+
+payStatus: 支付状态
+
+payAMT: 支付总金额
+
+                          udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式进行传输
+
+样例程序：
+
+\[\[DatatistTracker sharedInstance\] trackPayment:@"2017101716591100" payMethod:@"支付宝" payStatus:true payAMT:9000.0 udVariable:nil\];
+
+
+
+预充值
+
+	说明：充值成功时调用，采集充值信息，可以用map添加自定义变量 。
+
+接口声明：- \(void\)trackPreCharge:\(double\)amt chargeMethod:\(NSString \*\)chargeMethod couponAMT:\(double\)coupon payStatus:\(BOOL\)pay udVariable:\(NSDictionary \*\)vars;
+
+API说明：采集预充值事件 。
+
+参数说明：
+
+chargeAMT: 充值金额
+
+chargeMethod: 充值渠道
+
+couponAMT: 充值优惠金额
+
+payStatus: 支付状态
+
+                          udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式进行传输
+
+样例程序：
+
+
+
+\[\[DatatistTracker sharedInstance\] trackPreCharge:600.0 chargeMethod:@"微信支付" couponAMT:200.0 payStatus:true udVariable:nil\];
 
 
 
