@@ -138,12 +138,12 @@ dtTracker('search','火龙果',false,false,mjson);
 ##### 接口声明：
 
 ```
-trackRegister (uid: string, type: string, authenticated: boolean, udVariable: object , callback: function|option)
+trackRegister (userid: string, type: string, authenticated: boolean, udVariable: object , callback: function|option)
 ```
 
 ##### 参数说明：
 
-1.uid: 用户注册的用户ID；
+1.userid: 用户注册的用户ID；
 
 2.type: 用户类型；是否已认证的标识，值为true/false
 
@@ -169,12 +169,12 @@ dtTracker('register','yourUserId','企业用户',true,mjson);
 ##### 接口声明：
 
 ```
-trackLogin (uid:string,udVariable:object, callback:function|option)
+trackLogin (userid:string,udVariable:object, callback:function|option)
 ```
 
 ##### 参数说明：
 
-1.uid: 用户ID
+1.userid: 用户ID
 
 2.udVariable: 客户可扩展的自定义变量，以JSON对象的形式进行传输；
 
