@@ -449,7 +449,7 @@ Track.track().preCharge() 
 
 ### 7.1自定义事件
 
-说明：在任意位置添加采集代码，记录用户行为或其他你所关注的数据，可以用map添加自定义变量 。
+说明：在任意位置添加采集代码，记录用户行为或其他你所关注的数据，可以用map添加自定义变量 。
 
 ##### 接口声明：
 
@@ -461,7 +461,7 @@ public Event trackEvent(@NonNull String eventName, Map<String, String> udVariabl
 
 eventName: 事件名称
 
-udVariable: 客户可扩展的自定义变量，以MAP对象的形式进行传输；	
+udVariable: 客户可扩展的自定义变量，以MAP对象的形式进行传输；
 
 示例：
 
@@ -470,9 +470,9 @@ final Map<String, String> eventMap = new HashMap<>();
 eventMap.put("活动ID","HDL1111"); 
 eventMap.put("活动标题","双十一特惠"); 
 TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker();
- Track.track().event()         
-    .trackEvent("活动信息",eventMap)         
-    .submit(tracker);	
+ Track.track().event() 
+    .trackEvent("活动信息",eventMap) 
+    .submit(tracker);
 ```
 
 ### 7.2建议自定义埋点事件--下载渠道
@@ -482,12 +482,12 @@ TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).g
 示例：
 
 ```
-final Map<String, String> eventMap = new HashMap<>();	
+final Map<String, String> eventMap = new HashMap<>();    
 eventMap.put("渠道ID","HDL1111"); 
 eventMap.put("渠道名称","应用宝");
  TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker(); 
-Track.track().event()         
-    .trackEvent("下载渠道",eventMap)         
+Track.track().event() 
+    .trackEvent("下载渠道",eventMap) 
     .submit(tracker);
 ```
 
@@ -501,10 +501,9 @@ Track.track().event() 
 final Map<String, String> eventMap = new HashMap<>();
 eventMap.put("xxxxx","xxxxx");
  TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker();
- Track.track().event()         
-    .trackEvent("init",eventMap)         
+ Track.track().event() 
+    .trackEvent("init",eventMap) 
     .submit(tracker);
-
 ```
 
 
