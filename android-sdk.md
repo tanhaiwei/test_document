@@ -167,8 +167,8 @@ eventMap.put("价格","大于100");
  eventMap.put("附加","运输方便"); 
 eventMap.put("方式","物流"); 
 TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker();
- Track.track().search()         
-    .trackSearch("水果之王", true, true, eventMap)         
+ Track.track().search() 
+    .trackSearch("水果之王", true, true, eventMap) 
     .submit(tracker);
 ```
 
@@ -199,9 +199,9 @@ final Map<String, String> eventMap = new HashMap<>();
 eventMap.put("用户公司"," xxx公司"); 
 eventMap.put("xxxx "," xxxx ");
 TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker();
-Track.track()         
-    .register()         
-    .trackRegister(userId,"VIP",true, eventMap)         
+Track.track() 
+    .register() 
+    .trackRegister(userId,"VIP",true, eventMap) 
     .submit(tracker);
 ```
 
@@ -228,8 +228,8 @@ final Map<String, String> eventMap = new HashMap<>();
 eventMap.put("用户类型","企业用户");
  eventMap.put("用户公司"," xxx公司");
  TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker(); 
-Track.track().login()         
-    .trackLogin("uid-2017101609320300",eventMap)         
+Track.track().login() 
+    .trackLogin("uid-2017101609320300",eventMap) 
     .submit(tracker);
 ```
 
@@ -266,8 +266,8 @@ final Map<String, String> eventMap = new HashMap<>();
 eventMap.put("参与活动"," XX促销"); 
 eventMap.put("xxxx ","xxxx "); 
 TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker();
- Track.track().productPage()         
-    .trackProductPage("商品sku","果蔬", "柑橘类", "澳大利亚脐橙", 100.00, 67.00, eventMap)         
+ Track.track().productPage() 
+    .trackProductPage("商品sku","果蔬", "柑橘类", "澳大利亚脐橙", 100.00, 67.00, eventMap) 
     .submit(tracker);
 ```
 
@@ -275,7 +275,7 @@ TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).g
 
 说明：点击加入购物车按钮时调用，采集加入购物车的商品信息，可以用map添加自定义变量 。
 
-#####  接口声明：
+##### 接口声明：
 
 ```
 public Cart trackAddCart\(@NonNull String sku, long productQuantity, double productRealPrice, Map&lt;String, String&gt; udVariable\)
@@ -298,8 +298,8 @@ final Map<String, String> eventMap = new HashMap<>();
 eventMap.put("商品类型","买一赠一活动商品"); 
 eventMap.put("xxxx "," xxxx "); 
 TrackerKernel tracker= ((YourApplication) YourActivity.this.getApplication()).getTracker(); 
-Track.track().cart()         
-    .trackAddCart(sku, 10000, 67.00, eventMap)         
+Track.track().cart() 
+    .trackAddCart(sku, 10000, 67.00, eventMap) 
     .submit(tracker);
 ```
 
@@ -371,20 +371,22 @@ productItem = new ProductItem("sku:43557566343546700","菠萝",35.00,45.00,10,""
 eventMap.put("客户类型","代理");
  eventMap.put("客户","SPEEDO"); 
 TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker();
- Track.track().order()         
-    .trackOrder(orderInfo, couponInfo, productInfo, eventMap)         
+ Track.track().order() 
+    .trackOrder(orderInfo, couponInfo, productInfo, eventMap) 
     .submit(tracker);
 ```
 
-支付订单
+### 6.7支付订单
 
-```
 说明：支付成功时调用，采集支付信息，可以用map添加自定义变量 。
 
-接口声明：public Payment trackPayment\(@NonNull String orderID, String payMethod, boolean payStatus, double payAMT, Map&lt;String, String&gt; udVariable\)
+##### 接口声明：
 
-    参数说明：
 ```
+public Payment trackPayment\(@NonNull String orderID, String payMethod, boolean payStatus, double payAMT, Map&lt;String, String&gt; udVariable\)
+```
+
+##### 参数说明：
 
 orderID: 订单号
 
@@ -396,25 +398,29 @@ payAMT: 支付总金额
 
 udVariable: 客户可扩展的自定义变量，以MAP对象的形式进行传输；
 
-```
 示例：
-```
-
-final Map&lt;String, String&gt; eventMap = new HashMap&lt;&gt;\(\);
-
-eventMap.put\("参加活动","免配送费"\); eventMap.put\("xxxx "," xxxx "\); TrackerKernel tracker = \(\(YourApplication\) YourActivity.this.getApplication\(\)\).getTracker\(\); Track.track\(\).payment\(\)         .trackPayment\("orderId-24316435A88Y2","支付宝&微信", true, 124502.023, eventMap\)         .submit\(tracker\);
-
-预充值
 
 ```
+final Map<String, String> eventMap = new HashMap<>();
+eventMap.put("参加活动","免配送费"); 
+eventMap.put("xxxx "," xxxx "); 
+TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker(); 
+Track.track().payment() 
+    .trackPayment("orderId-24316435A88Y2","支付宝&微信", true, 124502.023, eventMap) 
+    .submit(tracker);
+```
+
+### 6.8预充值
+
 说明：充值成功时调用，采集充值信息，可以用map添加自定义变量 。
 
-接口声明：public PreCharge trackPreCharge\(double chargeAMT, @NonNull String chargeMethod, double couponAMT, boolean payStatus, Map&lt;String, String&gt; udVariable\)
+##### 接口声明：
 
-
-
-    参数说明：
 ```
+public PreCharge trackPreCharge\(double chargeAMT, @NonNull String chargeMethod, double couponAMT, boolean payStatus, Map&lt;String, String&gt; udVariable\)
+```
+
+##### 参数说明：
 
 chargeAMT: 充值金额
 
@@ -424,13 +430,82 @@ couponAMT: 充值优惠金额
 
 payStatus: 支付状态，值为true/false
 
-```
-          udVariable: 客户可扩展的自定义变量，以MAP对象的形式进行传输；
-```
+udVariable: 客户可扩展的自定义变量，以MAP对象的形式进行传输；
 
 示例：
 
-final Map&lt;String, String&gt; eventMap = new HashMap&lt;&gt;\(\);
+```
+final Map<String, String> eventMap = new HashMap<>();
+eventMap.put("充值目的地","上海");
+ eventMap.put("充值客户类型","个人");
+ eventMap.put("充值客户ID","P2017101700329");
+ TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker(); 
+Track.track().preCharge() 
+    .trackPreCharge(1000.00,"微信充值",10,true,eventMap) 
+    .submit(tracker);
+```
 
-eventMap.put\("充值目的地","上海"\); eventMap.put\("充值客户类型","个人"\); eventMap.put\("充值客户ID","P2017101700329"\); TrackerKernel tracker = \(\(YourApplication\) YourActivity.this.getApplication\(\)\).getTracker\(\); Track.track\(\).preCharge\(\)         .trackPreCharge\(1000.00,"微信充值",10,true,eventMap\)         .submit\(tracker\);
+## 7.自定义事件
+
+### 7.1自定义事件
+
+说明：在任意位置添加采集代码，记录用户行为或其他你所关注的数据，可以用map添加自定义变量 。
+
+##### 接口声明：
+
+```
+public Event trackEvent(@NonNull String eventName, Map<String, String> udVariable)
+```
+
+##### 参数说明：
+
+eventName: 事件名称
+
+udVariable: 客户可扩展的自定义变量，以MAP对象的形式进行传输；	
+
+示例：
+
+```
+final Map<String, String> eventMap = new HashMap<>();
+eventMap.put("活动ID","HDL1111"); 
+eventMap.put("活动标题","双十一特惠"); 
+TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker();
+ Track.track().event()         
+    .trackEvent("活动信息",eventMap)         
+    .submit(tracker);	
+```
+
+### 7.2建议自定义埋点事件--下载渠道
+
+说明：APP在多渠道发布时，建议添加埋点，用于多渠道分析，建议用自定义事件加上此埋点
+
+示例：
+
+```
+final Map<String, String> eventMap = new HashMap<>();	
+eventMap.put("渠道ID","HDL1111"); 
+eventMap.put("渠道名称","应用宝");
+ TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker(); 
+Track.track().event()         
+    .trackEvent("下载渠道",eventMap)         
+    .submit(tracker);
+```
+
+### 7.3建议自定义埋点事件--启动页
+
+说明: 在APP打开时2秒的启动页时，建议添加埋点，用于标识APP的启动，用户行为的开始。其中”init”参数请勿修改！
+
+示例：
+
+```
+final Map<String, String> eventMap = new HashMap<>();
+eventMap.put("xxxxx","xxxxx");
+ TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker();
+ Track.track().event()         
+    .trackEvent("init",eventMap)         
+    .submit(tracker);
+
+```
+
+
 
