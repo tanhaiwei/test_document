@@ -356,7 +356,12 @@ udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式�
 样例程序：
 
 ```
-DatatistOrderInfo \*orderInfo = \[DatatistOrderInfo new\]; orderInfo.orderID = @"2017101716591100"; orderInfo.orderAMT = 9020.0; orderInfo.shipMethod = @"顺丰快递"; orderInfo.shipAddress = @"上海市徐汇区宜山路333号 s汇鑫国际1号楼603\#"; orderInfo.shipAMT = 20.0; DatatistCouponInfo \*couponInfo = \[DatatistCouponInfo new\]; couponInfo.couponType = @"红包%";
+DatatistOrderInfo \*orderInfo = \[DatatistOrderInfo new\]; orderInfo.orderID = @"2017101716591100"; 
+orderInfo.orderAMT = 9020.0; orderInfo.shipMethod = @"顺丰快递"; 
+orderInfo.shipAddress = @"上海市徐汇区宜山路333号 s汇鑫国际1号楼603\#"; 
+orderInfo.shipAMT = 20.0; 
+DatatistCouponInfo \*couponInfo = \[DatatistCouponInfo new\]; 
+couponInfo.couponType = @"红包%";
 couponInfo.couponAMT = 999.002;
 
 DatatistCouponInfo *couponInfo2 = [DatatistCouponInfo new];
