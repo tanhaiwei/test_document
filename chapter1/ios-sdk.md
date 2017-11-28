@@ -4,7 +4,7 @@
 
 最新版DatatistTrackers使用ARC并支持IOS8+和OSC10.8+
 
-datatist支持3中安装方式
+datatist iOS SDK 支持3种安装方式
 
 ### 安装方式A：使用cocoapods安装
 
@@ -446,7 +446,7 @@ udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式�
 
 ### 5.1自定义事件
 
-说明：在任意位置添加采集代码，记录用户行为或其他你所关注的数据，可以用map添加自定义变量 。。
+说明：在任意位置添加采集代码，记录用户行为或其他你所关注的数据，可以用map添加自定义变量 。。
 
 ##### 接口声明：
 
@@ -477,8 +477,6 @@ udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式�
 ```
 [[DatatistTracker sharedInstance] trackEvent: @"init " udVariable:nil];
 ```
-
-
 
 
 
