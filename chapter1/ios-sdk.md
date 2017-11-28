@@ -193,7 +193,7 @@ udVariable:    用户自定义参数，可以为nil
 
 ### 4.2用户注册
 
-说明：用户注册成功的回调中，先调用setUserId接口，再调用用户注册接口，采集注册信息，可以用map添加自定义变量 。
+说明：用户注册成功的回调中，先调用setUserId接口，再调用用户注册接口，采集注册信息，可以用map添加自定义变量 。
 
 ##### 接口声明：
 
@@ -221,7 +221,7 @@ udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式�
 
 ### 4.3登录
 
-说明：用户登录成功的回调中，先调用setUserId接口，再调用用户登录接口，采集登录信息，可以用map添加自定义变量 。
+说明：用户登录成功的回调中，先调用setUserId接口，再调用用户登录接口，采集登录信息，可以用map添加自定义变量 。
 
 ##### 接口声明：
 
@@ -243,7 +243,40 @@ udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式�
 [[DatatistTracker sharedInstance] trackLogin:@"your_userid" udVariable:@{@"loginTime": @((long long)[[NSDate date] timeIntervalSince1970] * 1000)}];
 ```
 
+### 4.4产品页访问
 
+说明：进入商品详情页后调用，采集商品信息，可以用map添加自定义变量 。
+
+##### 接口声明：
+
+```
+- (void)trackProductPage:(NSString *)sku productCategory1:(NSString *)category1 productCategory2:(NSString *)category2 productCategory3:(NSString *)category3 productOriginPrice: (double)originPrice productRealPrice:(double)realPrice udVariable:(NSDictionary *)vars;
+```
+
+API说明：采集产品也信息。
+
+##### 参数说明：
+
+sku: 页面产品的SKU信息；
+
+category1: 一级目录；
+
+category2: 二级目录，没有值就留空；
+
+category3: 三级目录，没有值就留空；
+
+originalPrice: 商品原价
+
+realPrice: 商品优惠价
+
+udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式进行传输；
+
+样例程序：
+
+```
+// 产品页访问
+[[DatatistTracker sharedInstance] trackProductPage:@"4567934501204569" productCategory1:@"电子产品" productCategory2:@"手机" productCategory3:@"安卓手机" productOriginPrice:3999.0 productRealPrice:3000.0 udVariable:@{@"event": @"productPage"}];
+```
 
 
 
