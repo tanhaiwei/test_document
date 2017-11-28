@@ -72,34 +72,7 @@ dtTracker('pageview',mjson);
 
 ## 3.事件配置
 
-### 3.1自定义事件
-
-说明：在任意位置添加采集代码，记录用户行为或其他你所关注的数据，可以用JSON添加自定义变量。
-
-##### 接口声明：
-
-```
-trackEvent(eventName: string,udVariable: object,callback: function|option)
-```
-
-##### 参数说明：
-
-1.eventName:事件名称；
-
-2.udVariable: 客户可扩展的自定义变量，以JSON对象的形式进行传输；
-
-示例：
-
-```
-//可以在任意位置记录用户行为或其他数据  
-var mjson={  
-"活动ID":"1",  
-"活动标题":"XXXX"  
-};  
-dtTracker('event','首页活动',mjson);
-```
-
-### 3.2搜索采集
+### 3.1搜索采集
 
 说明：点击搜索按钮时，采集搜索的关键词及关键词来源，如热门推荐词或历史记录，可以用JSON添加自定义变量。
 
@@ -131,7 +104,7 @@ var mjson={
 dtTracker('search','火龙果',false,false,mjson);
 ```
 
-### 3.3用户注册
+### 3.2用户注册
 
 说明：用户注册成功的回调中，先调用setUserId接口，再调用用户注册接口，采集注册信息，可以用JSON添加自定义变量。
 
@@ -162,7 +135,7 @@ var mjson={
 dtTracker('register','yourUserId','企业用户',true,mjson);
 ```
 
-### 3.4.用户登录
+### 3.3用户登录
 
 说明：用户登录成功的回调中，先调用setUserId接口，再调用用户登录接口，采集登录信息，可以用JSON添加自定义变量。
 
@@ -189,7 +162,7 @@ var mjson={
 dtTracker('login','yourUserId',mjson);
 ```
 
-### 3.**5.产品访问页**
+### 3.4**产品访问页**
 
 说明：进入商品详情页后调用，采集商品信息，可以用JSON添加自定义变量。
 
@@ -225,7 +198,7 @@ var mjson={
 dtTracker('productPage','skuxxxx','果蔬','柑橘类','澳大利亚脐橙',100.0,98.0,mjson);
 ```
 
-### 3.6.加入购物车
+### 3.5加入购物车
 
 说明：点击加入购物车按钮时调用，采集加入购物车的商品信息，可以用JSON添加自定义变量。
 
@@ -255,7 +228,7 @@ var mjson={
 dtTracker('addCart','skuxxxx',2,10.0,mjson);
 ```
 
-### 3.7.生成订单
+### 3.6生成订单
 
 说明：提交订单时调用，设置订单中的必要参数，采集订单信息，可以用JSON添加自定义变量。
 
@@ -341,7 +314,7 @@ var mjson={
 dtTracker('order',orderInfo ,couponInfo ，productInfo ,mjson);
 ```
 
-### 3.8.支付订单
+### 3.7支付订单
 
 说明：支付成功时调用，采集支付信息，可以用JSON添加自定义变量。
 
@@ -373,7 +346,7 @@ var mjson={
 dtTracker('payment','订单ID','xx网银',true,18.2,mjson);
 ```
 
-### 3.9.预充值
+### 3.8预充值
 
 说明：充值成功时调用，采集充值信息，可以用JSON添加自定义变量。
 
@@ -403,6 +376,35 @@ var mjson={
 "参与活动":"充100得120"
 };  
 dtTracker('preCharge',100.0,'xx网银',20.0,true,mjson);
+```
+
+## 4.自定义事件
+
+### 4.1自定义事件
+
+说明：在任意位置添加采集代码，记录用户行为或其他你所关注的数据，可以用JSON添加自定义变量。
+
+##### 接口声明：
+
+```
+trackEvent(eventName: string,udVariable: object,callback: function|option)
+```
+
+##### 参数说明：
+
+1.eventName:事件名称；
+
+2.udVariable: 客户可扩展的自定义变量，以JSON对象的形式进行传输；
+
+示例：
+
+```
+//可以在任意位置记录用户行为或其他数据  
+var mjson={  
+"活动ID":"1",  
+"活动标题":"XXXX"  
+};  
+dtTracker('event','首页活动',mjson);
 ```
 
 
