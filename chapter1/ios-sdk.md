@@ -379,7 +379,7 @@ productInfo2.productRealPrice = 0.01;
 productInfo2.productQuantity = 3;
 productInfo2.productSourceSku = @"xxxxxxxxxxxxxxxxx";
 
-[[DatatistTracker sharedInstance] trackOrder:orderInfo couponInfo:@[couponInfo, couponInfo2] productInfo:@[productInfo, productInfo2] udVariable:nil];         
+[[DatatistTracker sharedInstance] trackOrder:orderInfo couponInfo:@[couponInfo, couponInfo2] productInfo:@[productInfo, productInfo2] udVariable:nil];
 ```
 
 ### 4.7支付订单
@@ -441,6 +441,44 @@ udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式�
 ```
 [[DatatistTracker sharedInstance] trackPreCharge:600.0 chargeMethod:@"微信支付" couponAMT:200.0 payStatus:true udVariable:nil];
 ```
+
+## 5.自定义事件
+
+### 5.1自定义事件
+
+说明：在任意位置添加采集代码，记录用户行为或其他你所关注的数据，可以用map添加自定义变量 。。
+
+##### 接口声明：
+
+```
+- (void)trackEvent:(NSString *)name udVariable:(NSDictionary *)vars;
+```
+
+##### 参数说明：
+
+name: 事件名称
+
+udVariable: 客户可扩展的自定义变量，以NSDictionary对象的形式进行传输
+
+样例程序：
+
+```
+[[DatatistTracker sharedInstance] trackEvent: @"custom"    udVariable:@{@"happenTime": @((long long)[[NSDate date] timeIntervalSince1970] * 1000)}];
+```
+
+### 5.2建议的自定义埋点事件
+
+启动页
+
+说明: 在APP打开时2秒的启动页时，建议添加埋点，用于标识APP的启动，用户行为的开始。其中”init”参数请勿修改！
+
+示例：
+
+```
+[[DatatistTracker sharedInstance] trackEvent: @"init " udVariable:nil];
+```
+
+
 
 
 
