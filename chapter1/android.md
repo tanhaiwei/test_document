@@ -146,7 +146,7 @@ Track.track().pageview() 
 ##### 接口声明：
 
 ```
-public Search trackSearch\(@NonNull String keyword, boolean recommendationSearchFlag, boolean historySearchFlag, Map&lt;String, String&gt; udVariable\)
+public Search trackSearch(@NonNull String keyword, boolean recommendationSearchFlag, boolean historySearchFlag, Map<String, String> udVariable)
 ```
 
 ##### 参数说明：
@@ -180,7 +180,7 @@ TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).g
 ##### 接口声明：
 
 ```
-public Register trackRegister\(@NonNull String uid, @NonNull String type, boolean authenticated, Map&lt;String, String&gt; udVariable\)
+public Register trackRegister(@NonNull String uid, @NonNull String type, boolean authenticated, Map<String, String> udVariable)
 ```
 
 ##### 参数说明：
@@ -241,7 +241,7 @@ Track.track().login() 
 ##### 接口声明：
 
 ```
-public ProductPage trackProductPage\(@NonNull String sku, @NonNull String productCategory1, @NonNull String productCategory2,@NonNull String productCategory3, double productOriginalPrice, double productRealPrice, Map&lt;String, String&gt; udVariable\)
+public ProductPage trackProductPage(@NonNull String sku, @NonNull String productCategory1, @NonNull String productCategory2,@NonNull String productCategory3, double productOriginalPrice, double productRealPrice, Map<String, String> udVariable)
 ```
 
 ##### 参数说明：
@@ -279,7 +279,7 @@ TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).g
 ##### 接口声明：
 
 ```
-public Cart trackAddCart\(@NonNull String sku, long productQuantity, double productRealPrice, Map&lt;String, String&gt; udVariable\)
+public Cart trackAddCart(@NonNull String sku, long productQuantity, double productRealPrice, Map<String, String> udVariable)
 ```
 
 ##### 参数说明：
@@ -384,7 +384,7 @@ TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).g
 ##### 接口声明：
 
 ```
-public Payment trackPayment\(@NonNull String orderID, String payMethod, boolean payStatus, double payAMT, Map&lt;String, String&gt; udVariable\)
+public Payment trackPayment(@NonNull String orderID, String payMethod, boolean payStatus, double payAMT, Map<String, String> udVariable)
 ```
 
 ##### 参数说明：
@@ -418,7 +418,7 @@ Track.track().payment() 
 ##### 接口声明：
 
 ```
-public PreCharge trackPreCharge\(double chargeAMT, @NonNull String chargeMethod, double couponAMT, boolean payStatus, Map&lt;String, String&gt; udVariable\)
+public PreCharge trackPreCharge(double chargeAMT, @NonNull String chargeMethod, double couponAMT, boolean payStatus, Map<String, String> udVariable)
 ```
 
 ##### 参数说明：
