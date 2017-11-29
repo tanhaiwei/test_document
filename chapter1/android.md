@@ -34,9 +34,8 @@ public class YourApplication extends DatatistApplication
 
 在YourApplication中完成两个继承自DatatistApplication 的成员函数：
 
-· public String setTrackerUrl\(\) – 返回URL地址
-
-· public String setSiteId\(\) – 返回分配的SiteId
+* public String setTrackerUrl\(\) – 返回URL地址
+* public String setSiteId\(\) – 返回分配的SiteId
 
 ```
 @Override
