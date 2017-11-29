@@ -127,10 +127,10 @@ final Map<String, String> eventMap = new HashMap<>(); 
 eventMap.put("xxxx "," xxxx ");
 TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker(); 
 Track.track().pageview() 
-.setTitle("页面标题")
-.setUrl\(“当前activity路径”\)
- .trackPageview\(eventMap\)
- .submit\(tracker\);
+    .setTitle("页面标题")
+    .setUrl\(“当前activity路径”\)
+     .trackPageview\(eventMap\)
+     .submit\(tracker\);
 ```
 
 建议设置页面采集的位置如下：
