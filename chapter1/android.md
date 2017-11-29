@@ -123,14 +123,14 @@ udVariable: 客户可扩展的自定义变量，以MAP对象的形式进行存�
 示例：
 
 ```
-final Map<String, String> eventMap = new HashMap<>(); 
-eventMap.put("xxxx "," xxxx ");
-TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker(); 
-Track.track().pageview() 
+final Map<String, String> eventMap = new HashMap<>();
+ eventMap.put("xxxx "," xxxx ");
+TrackerKernel tracker = ((YourApplication) YourActivity.this.getApplication()).getTracker();
+ Track.track().pageview()     
     .setTitle("页面标题")
-    .setUrl\(“当前activity路径”\)
-     .trackPageview\(eventMap\)
-     .submit\(tracker\);
+    .setUrl(“当前activity路径”) 
+    .trackPageview(eventMap) 
+    .submit(tracker);
 ```
 
 建议设置页面采集的位置如下：
