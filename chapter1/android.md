@@ -2,7 +2,7 @@
 
 ## 1.安装SDK
 
-点击  [下载配置文件](#)
+点击  下载配置文件
 
 最新版Datatist SDK 支持Android API Version &gt;= 10 \(Android 2.3.3+\)
 
@@ -12,7 +12,7 @@ datatist Android SDK 支持2种安装方式
 
 通过Eclipse将下载的“datatist-sdk.jar”文件放至工程的libs文件夹中。
 
-### 安装方式B：**Gradle 编译环境**
+### 安装方式B：Gradle 编译环境
 
 在Android studio项目中创建libs文件夹，将下载的“datatist-sdk.jar”文件放至libs文件夹中。在module级别的build.gradle文件中添加依赖：
 
@@ -113,7 +113,7 @@ Track.track().tracker().setUserId("your userID");
 接口声明：
 
 ```
-public Pageview trackPageview\(Map&lt;String, String&gt; udVariable\)
+public Pageview trackPageview(Map<String, String> udVariable)
 ```
 
 参数说明：
